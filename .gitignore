@@ -1,0 +1,9 @@
+#Ignore virtual enviroment and chache files
+
+venv/
+__pychache__/
+
+# Ignore enviroment variables
+
+.env
+
