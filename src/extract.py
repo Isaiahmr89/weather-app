@@ -1,6 +1,6 @@
 from datetime import datetime
 import requests
-from config import API_KEY, BASE_URL, city
+from config import API_KEY, BASE_URL
 from store_data import store_weather_data
 
 
@@ -35,7 +35,6 @@ def fetch_weather(city):
                            description, time_of_data)
 
         return weather_data
-
 
     else:
         print(f"Error: {response.status_code}")

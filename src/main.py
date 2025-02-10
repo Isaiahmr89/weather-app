@@ -2,8 +2,7 @@ from extract import fetch_weather
 from src.config import city
 from store_data import store_weather_data
 from datetime import datetime
-import pytz
-
+import  pytz
 
 if __name__ == '__main__':
 
@@ -25,17 +24,16 @@ if __name__ == '__main__':
         rain = weather_data.get("rain", {}).get("1h", 0)  # Default to 0 if missing
         clouds = weather_data.get("clouds", {}).get("all", 0)  # Default to 0 if missing
         description = weather_data["weather"][0]["description"]
-        unix_timestamp = weather_data.get("dt")
+        time_of_data = weather_data.get("dt")
 
-        if unix_timestamp is None:
+        if time_of_data is None:
             print("Error: unix_timestamp not found in the API response.")
         else:
             est = pytz.timezone('US/Eastern')
-            time_of_data = datetime.fromtimestamp(unix_timestamp, est)
+            time_of_data = datetime.fromtimestamp(time_of_data, est)
 
             # Call the store_weather_data function with extracted values
             print(f"Inserting Data for {city_name}...")
             store_weather_data(city_name, current_weather, temperature, min_temp, max_temp,
                                pressure, humidity, visibility, wind_speed, rain, clouds,
                                description, time_of_data)
-

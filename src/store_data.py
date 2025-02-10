@@ -1,7 +1,5 @@
 import psycopg2
-from datetime import datetime
 from config import db_host, db_user, db_name, db_pass
-import logging
 
 
 def store_weather_data(city_name,
